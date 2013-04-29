@@ -91,6 +91,10 @@ h1 {
     margin-bottom: 15px;
 }
 
+section {
+    min-height: 100px;
+}
+
 .row {
     margin: 0 0 20px -20px;
 }
