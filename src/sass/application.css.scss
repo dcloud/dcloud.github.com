@@ -1,0 +1,28 @@
+@import "lib/bourbon/bourbon";
+@import "lib/base/base";
+@import "lib/neat/neat";
+
+header {
+    @include fill-parent;
+}
+
+header {
+    text-align: center
+}
+
+.subhead {
+    // font-size: $header-font-size / 2;
+}
+
+.container {
+    @include outer-container(100%);
+}
+
+.row {
+   @include row();
+}
+
+.single-col {
+    @include span-columns(6);
+    @include shift(3);
+}
