@@ -2,6 +2,9 @@
 @import "lib/base/base";
 @import "lib/neat/neat";
 
+$mobile: new-breakpoint(max-width 500px 8);
+
+
 header {
     @include fill-parent;
 }
@@ -15,7 +18,7 @@ header {
 }
 
 .container {
-    @include outer-container(100%);
+    @include outer-container;
 }
 
 .row {
@@ -24,5 +27,9 @@ header {
 
 .single-col {
     @include span-columns(6);
-    @include shift(3);
+    @include shift-in-context(3 of 12);
+    @include media($mobile) {
+        @include shift(1 of 8);
+        @include span-columns(6);
+    }
 }
