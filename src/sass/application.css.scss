@@ -10,30 +10,50 @@ body {
     font-size: $base-font-size;
     font-weight: $base-font-weight;
     line-height: $base-line-height;
+    color: $base-font-color;
 }
 
-@for $i from 1 through 6 {
-    h#{$i} {
-        font-weight: $heading-font-weight;
-        line-height: $heading-line-height;
+a {
+    text-decoration: none;
+    color: $action-color;
+    @include transition(color 0.7s ease-out);
+    &:hover {
+        color: darken($action-color, 20%);
     }
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-weight: $heading-font-weight;
+    line-height: $heading-line-height;
+    margin: 0 0 0.75em;
+}
+
+h1 {
+    margin-top: 0.25em;
+    font-size: $heading-font-size;
+
+    @include media($mobile) {
+    margin-top: 0;
+    }
+}
+
+@for $i from 2 through 6 {
+    h#{$i} { font-size: $heading-font-size*(1.5/$i); }
 }
 
 p {
     font-weight: $base-font-weight;
     letter-spacing: $base-letter-spacing;
+    @include animation(fadeIn seconds($fade-in-factor * 3) $fade-in-easing);
 }
 
 header {
     @include fill-parent;
 
     h1 {
-        text-align: center
+        text-align: center;
+        @include animation(fadeIn seconds($fade-in-factor * 1) $fade-in-easing);
     }
-}
-
-.subhead {
-    // font-size: $header-font-size / 2;
 }
 
 .container {

@@ -8,10 +8,11 @@ $heading-font-family: $base-font-family;
 
 // Font Sizes
 $base-font-size: 1.5em;
+$heading-font-size: 2 * $base-font-size;
 
 // Font Weights
 $base-font-weight: 300;
-$heading-font-weight: 400;
+$heading-font-weight: 200;
 
 // Letter Spacing
 $base-letter-spacing: em(0.2);
@@ -19,3 +20,28 @@ $base-letter-spacing: em(0.2);
 // Line height
 $base-line-height: 1.4;
 $heading-line-height: 1.2;
+
+// Colors
+$charcoal-gray: #2D3033;
+$bright-sky: #59B0FB;
+
+$base-font-color: $charcoal-gray;
+$action-color: $bright-sky;
+
+// Animation defintions
+
+@function seconds($t) {
+    @return #{$t}s;
+}
+
+$fade-in-factor: 0.3;
+$fade-in-easing: ease-in;
+
+@include keyframes(fadeIn) {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
