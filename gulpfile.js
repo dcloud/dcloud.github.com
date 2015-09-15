@@ -9,7 +9,6 @@ var gulp = require('gulp'),
 
 gulp.task('sass', function() {
     return streamqueue({ objectMode: true },
-        gulp.src('node_modules/normalize.css/normalize.css'),
         sass('src/sass/application.css.scss')
     )
     .pipe(concat('site.css'))
