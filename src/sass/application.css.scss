@@ -1,16 +1,35 @@
 @import "lib/bourbon/bourbon";
-@import "lib/base/base";
 @import "lib/neat/neat";
+@import "variables";
 
-$mobile: new-breakpoint(max-width 500px 8);
+body {
+    margin: 0;
+    padding: 0;
+    @include font-feature-settings("kern", "liga", "pnum");
+    font-family: $base-font-family;
+    font-size: $base-font-size;
+    font-weight: $base-font-weight;
+    line-height: $base-line-height;
+}
 
+@for $i from 1 through 6 {
+    h#{$i} {
+        font-weight: $heading-font-weight;
+        line-height: $heading-line-height;
+    }
+}
 
-header {
-    @include fill-parent;
+p {
+    font-weight: $base-font-weight;
+    letter-spacing: $base-letter-spacing;
 }
 
 header {
-    text-align: center
+    @include fill-parent;
+
+    h1 {
+        text-align: center
+    }
 }
 
 .subhead {
@@ -18,18 +37,21 @@ header {
 }
 
 .container {
-    @include outer-container;
+    @include outer-container(800px);
+    padding: em(8) 0;
 }
 
 .row {
-   @include row();
+    @include fill-parent();
+    @include row();
 }
 
-.single-col {
-    @include span-columns(6);
-    @include shift-in-context(3 of 12);
-    @include media($mobile) {
-        @include shift(1 of 8);
-        @include span-columns(6);
+.columns {
+    @include media($tablet) {
+        @include pad();
     }
+}
+
+@for $i from 1 through 12 {
+  .col-#{$i} { @include span-columns($i); }
 }

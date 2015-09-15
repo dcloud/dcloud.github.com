@@ -1,0 +1,21 @@
+// mobile breakpoint
+$mobile: new-breakpoint(max-width 480px 4);
+$tablet: new-breakpoint(max-width 800px 8);
+
+// Typography
+$base-font-family: $helvetica;
+$heading-font-family: $base-font-family;
+
+// Font Sizes
+$base-font-size: 1.5em;
+
+// Font Weights
+$base-font-weight: 300;
+$heading-font-weight: 400;
+
+// Letter Spacing
+$base-letter-spacing: em(0.2);
+
+// Line height
+$base-line-height: 1.4;
+$heading-line-height: 1.2;
