@@ -1,4 +1,8 @@
-dcloud.github.com
-=================
+# danielcloud.org
 
-My website, I guess
+My website.
+
+
+## Notes
+
+Create a new blog post file using the `mkpost.zsh` script.
