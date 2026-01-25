@@ -1,0 +1,128 @@
+/* Major Third scale, with sm tweaked up */
+/* For browsers that support clamp  */
+@supports (font-size: clamp(1rem, 1vi, 1rem)) {
+    :root {
+        --fs-sm: clamp(0.875rem, 0.192vi + 0.815rem, 0.969rem);
+        --fs-base: clamp(1rem, 0.34vi + 0.91rem, 1.19rem);
+        --fs-md: clamp(1.25rem, 0.61vi + 1.1rem, 1.58rem);
+        --fs-lg: clamp(1.56rem, 1vi + 1.31rem, 2.11rem);
+        --fs-xl: clamp(1.95rem, 1.56vi + 1.56rem, 2.81rem);
+        --fs-xxl: clamp(2.44rem, 2.38vi + 1.85rem, 3.75rem);
+        --fs-xxxl: clamp(3.05rem, 3.54vi + 2.17rem, 5rem);
+    }
+}
+/* For browsers that don't support clamp */
+@supports not (font-size: clamp(1rem, 1vi, 1rem)) {
+    :root {
+        --fs-sm: 0.875rem;
+        --fs-base: 1rem;
+        --fs-md: 1.25rem;
+        --fs-lg: 1.56rem;
+        --fs-xl: 1.95rem;
+        --fs-xxl: 2.44rem;
+        --fs-xxxl: 3.05rem;
+    }
+    @media screen and (min-width: 1280px) {
+        :root {
+            --fs-sm: 0.969rem;
+            --fs-base: 1.19rem;
+            --fs-md: 1.58rem;
+            --fs-lg: 2.11rem;
+            --fs-xl: 2.81rem;
+            --fs-xxl: 3.75rem;
+            --fs-xxxl: 5rem;
+        }
+    }
+}
+:root {
+    --font-stack-geometric-humanist:
+        Avenir, Montserrat, Corbel, "URW Gothic", source-sans-pro, sans-serif;
+    --font-stack-classical-humanist:
+        Optima, Candara, "Noto Sans", source-sans-pro, sans-serif;
+    --font-stack-code:
+        ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas,
+        "DejaVu Sans Mono", monospace;
+    --font-body: var(--font-stack-classical-humanist);
+    --font-display: var(--font-stack-geometric-humanist);
+    --font-code: var(--font-stack-code);
+
+    --font-weight-body: normal;
+    --font-weight-display: 300;
+
+    --line-height-body: 1.5;
+    --line-height-display: 1.25;
+
+    --letter-spacing-body: normal;
+
+    --color-charcoal-gray: #2d3033;
+    --color-sky-bright: #59b0fb;
+    --color-sky-darkened: color-mix(in lch, var(--color-sky-bright), #008 40%);
+
+    --font-color-default: var(--color-charcoal-gray);
+    --font-color-action: var(--color-sky-bright);
+}
+
+:root {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+    font-weight: var(--font-weight-body);
+    font-size: var(--fs-base);
+    line-height: var(--line-height-body);
+    color: var(--font-color-default);
+}
+
+a {
+    color: var(--font-color-action);
+    text-underline-offset: 2px;
+    text-decoration: underline 1px;
+}
+a:hover {
+    color: var(--color-sky-darkened);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-display);
+    font-weight: var(--font-weight-display);
+    line-height: var(--line-height-display);
+    margin: 0 0 0.75em;
+}
+
+h1 {
+    font-size: var(--fs-xxl);
+}
+h2 {
+    font-size: var(--fs-xl);
+}
+h3 {
+    font-size: var(--fs-lg);
+}
+h4 {
+    font-size: var(--fs-md);
+}
+h5 {
+    font-size: var(--fs-base);
+}
+
+p {
+    letter-spacing: var(--letter-spacing-body);
+}
+
+header h1 {
+    text-align: center;
+}
+
+.container {
+    width: clamp(40ch, 95vw, 88ch);
+    margin: 0 auto;
+    padding: 0.5em 0;
+}
