@@ -7,6 +7,17 @@
         <link rel="stylesheet" href='{{ get_url(path="css/site.css") }}' />
     </head>
     <body>
-        <div class="container">{% block content %}{% endblock content %}</div>
+        <div class="container">
+            <header>
+                <h1>Daniel Cloud</h1>
+                <nav>
+                    <ol class="sitenav">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/blog">Blog</a></li>
+                    </ol>
+                </nav>
+            </header>
+            <div class="content">{% block content %}{% endblock content %}</div>
+        </div>
     </body>
 </html>

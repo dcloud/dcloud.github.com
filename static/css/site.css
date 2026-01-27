@@ -50,16 +50,23 @@
     --font-weight-display: 300;
 
     --line-height-body: 1.5;
-    --line-height-display: 1.25;
+    --line-height-display: 1.125;
 
     --letter-spacing-body: normal;
 
-    --color-charcoal-gray: #2d3033;
-    --color-sky-bright: #59b0fb;
-    --color-sky-darkened: color-mix(in lch, var(--color-sky-bright), #008 40%);
+    --color-ruby-red: oklch(48% 48% 23deg);
+    --color-space-indigo: oklch(30% 9% 280deg);
+    --color-space-indigo-dark: oklch(20% 9% 280deg);
+    --color-space-indigo-light: oklch(40% 25% 280deg);
+    --color-near-black: oklch(12% 9% 280deg);
+    --color-near-white: oklch(99% 1% 280deg);
+    --color-dusk-blue: oklch(46% 29% 262deg);
+    --color-lavender-mist: oklch(97% 5% 308deg);
+    --color-jasmine: oklch(94% 31% 100deg);
 
-    --font-color-default: var(--color-charcoal-gray);
-    --font-color-action: var(--color-sky-bright);
+    --font-color-default: var(--color-space-indigo);
+    --font-color-action: var(--color-dusk-blue);
+    --font-color-accent: var(--color-ruby-red);
 }
 
 :root {
@@ -67,6 +74,7 @@
 }
 
 body {
+    min-height: 100vh;
     margin: 0;
     padding: 0;
     font-family: var(--font-body);
@@ -74,6 +82,8 @@ body {
     font-size: var(--fs-base);
     line-height: var(--line-height-body);
     color: var(--font-color-default);
+
+    background: var(--color-space-indigo);
 }
 
 a {
@@ -82,7 +92,8 @@ a {
     text-decoration: underline 1px;
 }
 a:hover {
-    color: var(--color-sky-darkened);
+    color: var(--font-color-accent);
+    text-decoration-style: double;
 }
 
 h1,
@@ -94,7 +105,7 @@ h6 {
     font-family: var(--font-display);
     font-weight: var(--font-weight-display);
     line-height: var(--line-height-display);
-    margin: 0 0 0.75em;
+    margin: 0 0 1.25rem;
 }
 
 h1 {
@@ -117,12 +128,101 @@ p {
     letter-spacing: var(--letter-spacing-body);
 }
 
-header h1 {
-    text-align: center;
+[id] {
+    scroll-margin: 1.5rem;
 }
 
 .container {
-    width: clamp(40ch, 95vw, 88ch);
-    margin: 0 auto;
-    padding: 0.5em 0;
+    --padding-x: 6ch;
+    --padding-y: 2cap;
+    width: clamp(
+        calc(40ch - var(--padding-x) * 2),
+        calc(95vw - var(--padding-x) * 2),
+        calc(88ch - var(--padding-x) * 2)
+    );
+    margin-inline: auto;
+    margin-block: var(--padding-y);
+
+    background-color: var(--color-space-indigo);
+    color: var(--color-near-white);
+}
+
+.container > :not(:first-child) {
+    margin-top: var(--padding-y);
+}
+
+.container > header {
+    padding: 2cap 0 1cap;
+    border-width: 1px 0 6px;
+    border-style: solid;
+    border-image: linear-gradient(
+            in oklch to right,
+            var(--color-space-indigo-light) 0%,
+            var(--color-jasmine) 50%,
+            var(--color-space-indigo-light) 100%
+        )
+        1;
+}
+
+.container > header > h1 {
+    text-align: center;
+    font-weight: 500;
+    letter-spacing: 0.2rem;
+}
+
+ol.sitenav {
+    --width: 6ch;
+    --gap: 2ch;
+
+    margin: 0;
+    padding: 0;
+
+    display: grid;
+    grid-gap: var(--gap);
+    grid-template-columns: repeat(auto-fill, minmax(var(--width), 1fr));
+    list-style: none;
+    padding-inline: var(--gap);
+}
+
+ol.sitenav > li a {
+    display: inline-block;
+    padding: 0.5ch;
+    color: var(--color-jasmine);
+}
+
+.content {
+    min-height: 70vh;
+    color: var(--color-near-black);
+    background-color: var(--color-near-white);
+    padding: var(--padding-y) var(--padding-x);
+    box-shadow: 0 4px 6px var(--color-near-black);
+}
+
+.color-background-dark {
+    background-color: var(--color-background-dark);
+}
+
+.color-background-space-indigo {
+    background-color: var(--color-space-indigo);
+    color: color-mix(in oklch, var(--color-space-indigo), #fff 95%);
+}
+
+.color-background-dusk-blue {
+    background-color: var(--color-dusk-blue);
+    color: color-mix(in oklch, var(--color-dusk-blue), #fff 95%);
+}
+
+.color-background-jasmine {
+    background-color: var(--color-jasmine);
+    color: color-mix(in oklch, var(--color-jasmine), #000 50%);
+}
+
+.color-background-lavender-mist {
+    background-color: var(--color-lavender-mist);
+    color: color-mix(in oklch, var(--color-lavender-mist), #000 50%);
+}
+
+.color-background-ruby-red {
+    background-color: var(--color-ruby-red);
+    color: color-mix(in oklch, var(--color-ruby-red), #fff 95%);
 }
