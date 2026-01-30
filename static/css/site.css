@@ -42,7 +42,7 @@
     --font-stack-code:
         ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas,
         "DejaVu Sans Mono", monospace;
-    --font-body: var(--font-stack-classical-humanist);
+    --font-body: var(--font-stack-code);
     --font-display: var(--font-stack-geometric-humanist);
     --font-code: var(--font-stack-code);
 
@@ -54,10 +54,8 @@
 
     --letter-spacing-body: normal;
 
-    --color-ruby-red: oklch(48% 48% 23deg);
+    --color-ruby-red: oklch(47% 51% 23deg);
     --color-space-indigo: oklch(30% 9% 280deg);
-    --color-space-indigo-dark: oklch(20% 9% 280deg);
-    --color-space-indigo-light: oklch(40% 25% 280deg);
     --color-near-black: oklch(12% 9% 280deg);
     --color-near-white: oklch(99% 1% 280deg);
     --color-dusk-blue: oklch(46% 29% 262deg);
@@ -67,6 +65,7 @@
     --font-color-default: var(--color-space-indigo);
     --font-color-action: var(--color-dusk-blue);
     --font-color-accent: var(--color-ruby-red);
+    --background-color: var(--color-near-white);
 }
 
 :root {
@@ -82,8 +81,7 @@ body {
     font-size: var(--fs-base);
     line-height: var(--line-height-body);
     color: var(--font-color-default);
-
-    background: var(--color-space-indigo);
+    background-color: var(--background-color);
 }
 
 a {
@@ -103,7 +101,6 @@ h4,
 h5,
 h6 {
     font-family: var(--font-display);
-    font-weight: var(--font-weight-display);
     line-height: var(--line-height-display);
     margin: 0 0 1.25rem;
 }
@@ -133,7 +130,7 @@ p {
 }
 
 .container {
-    --padding-x: 6ch;
+    --padding-x: 3ch;
     --padding-y: 2cap;
     width: clamp(
         calc(40ch - var(--padding-x) * 2),
@@ -142,9 +139,6 @@ p {
     );
     margin-inline: auto;
     margin-block: var(--padding-y);
-
-    background-color: var(--color-space-indigo);
-    color: var(--color-near-white);
 }
 
 .container > :not(:first-child) {
@@ -153,13 +147,13 @@ p {
 
 .container > header {
     padding: 2cap 0 1cap;
-    border-width: 1px 0 6px;
+    border-width: 0 0 2px;
     border-style: solid;
     border-image: linear-gradient(
             in oklch to right,
-            var(--color-space-indigo-light) 0%,
+            var(--color-space-indigo) 0%,
             var(--color-jasmine) 50%,
-            var(--color-space-indigo-light) 100%
+            var(--color-space-indigo) 100%
         )
         1;
 }
@@ -187,42 +181,20 @@ ol.sitenav {
 ol.sitenav > li a {
     display: inline-block;
     padding: 0.5ch;
-    color: var(--color-jasmine);
 }
 
 .content {
     min-height: 70vh;
-    color: var(--color-near-black);
-    background-color: var(--color-near-white);
-    padding: var(--padding-y) var(--padding-x);
-    box-shadow: 0 4px 6px var(--color-near-black);
+    padding: var(--padding-y) 0;
 }
 
-.color-background-dark {
-    background-color: var(--color-background-dark);
-}
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-ruby-red: oklch(94% 83% 23deg);
 
-.color-background-space-indigo {
-    background-color: var(--color-space-indigo);
-    color: color-mix(in oklch, var(--color-space-indigo), #fff 95%);
-}
-
-.color-background-dusk-blue {
-    background-color: var(--color-dusk-blue);
-    color: color-mix(in oklch, var(--color-dusk-blue), #fff 95%);
-}
-
-.color-background-jasmine {
-    background-color: var(--color-jasmine);
-    color: color-mix(in oklch, var(--color-jasmine), #000 50%);
-}
-
-.color-background-lavender-mist {
-    background-color: var(--color-lavender-mist);
-    color: color-mix(in oklch, var(--color-lavender-mist), #000 50%);
-}
-
-.color-background-ruby-red {
-    background-color: var(--color-ruby-red);
-    color: color-mix(in oklch, var(--color-ruby-red), #fff 95%);
+        --font-color-default: var(--color-near-white);
+        --font-color-action: var(--color-jasmine);
+        --font-color-accent: var(--color-ruby-red);
+        --background-color: var(--color-near-black);
+    }
 }
