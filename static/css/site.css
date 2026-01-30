@@ -72,6 +72,11 @@
     box-sizing: border-box;
 }
 
+/* Opt in to default view transition */
+@view-transition {
+    navigation: auto;
+}
+
 body {
     min-height: 100vh;
     margin: 0;
@@ -141,12 +146,8 @@ p {
     margin-block: var(--padding-y);
 }
 
-.container > :not(:first-child) {
-    margin-top: var(--padding-y);
-}
-
-.container > header {
-    padding: 2cap 0 1cap;
+nav {
+    padding: 1cap 0;
     border-width: 0 0 2px;
     border-style: solid;
     border-image: linear-gradient(
@@ -158,9 +159,9 @@ p {
         1;
 }
 
-.container > header > h1 {
+[role="banner"] > h1 {
     text-align: center;
-    font-weight: 500;
+    font-weight: 400;
     letter-spacing: 0.2rem;
 }
 
