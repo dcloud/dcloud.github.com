@@ -4,7 +4,9 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Daniel Cloud: Software Engineer</title>
+        <link rel="shortcut icon" href="data:," />
         <link rel="stylesheet" href='{{ get_url(path="css/site.css") }}' />
+        {% block head %}{% endblock head %}
     </head>
     <body>
         <div class="container">
@@ -15,6 +17,7 @@
                 <ol class="sitenav">
                     <li><a href="{{ get_url(path="/") }}">Home</a></li>
                     <li><a href="{{ get_url(path="@/blog/_index.md") }}">Blog</a></li>
+                    <li><a href="{{ get_url(path="@/bakery/index.md") }}">Bakery</a></li>
                 </ol>
             </nav>
             <main class="content">{% block content %}{% endblock content %}</main>

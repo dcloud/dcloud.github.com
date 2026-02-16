@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<script src="{{get_url(path="js/bakery/calculator.js")}}" type="module"></script>
+<script src="{{get_url(path="js/bakery/math.js")}}" type="module"></script>
+{% endblock head %}
+
+{% block content %}
+<h2>Baking Tools</h2>
+<section class="tool-wrapper">
+    <h3>Temperature Calculator</h3>
+    <form id="temperature-calculator" class="tool">
+    <div class="form-group flex flex-justify-right">
+        <label for="ddt">Desired Dough Temperature</label>
+        <input type="text" inputmode="numeric" pattern="[0-9]*" value="78" class="form-control" id="ddt">
+    </div>
+    <div class="form-group flex flex-justify-right">
+        <label for="rt">Room Temperature</label>
+        <input type="text" inputmode="numeric" pattern="[0-9]*" class="form-control" id="rt">
+    </div>
+    <div class="form-group flex flex-justify-right">
+        <label for="ft">Flour Temperature</label>
+        <input type="text" inputmode="numeric" pattern="[0-9]*" class="form-control" id="ft">
+    </div>
+    <div class="form-group flex flex-justify-right">
+        <label for="wt">Water Temperature</label>
+        <input type="text" readonly class="form-control" id="wt">
+    </div>
+    </form>
+</section>
+
+<section class="tool-wrapper">
+    <h3>Baker's Math</h3>
+    <div id="bakers-math" class="tool">
+        <template id="ingredient-item">
+            <tr>
+                <th scope="row"></th>
+                <td></td>
+            </tr>
+        </template>
+        <div class="flex flex-columns">
+            <textarea id="recipe" rows="8" cols="30"></textarea>
+            <h4>Calculations</h4>
+            <aside><p>Currently, we only calculate ingredients measured by weight in grams.</p></aside>
+            <table id="recipe-percentages" class="recipe">
+                <caption>Baker's Percentages</caption>
+                <thead>
+                    <tr>
+                        <th>Quantity</th>
+                        <th>Ingredient</th>
+                        <th>Percent</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <div class="flex">
+                <div class="flex flex-align-start">
+                    <input id="scale-pct" type="text" inputmode="numeric" min="10" max="1000" value="50"><span>%</span>
+                </div>
+                <table id="scaled-recipe" class="recipe">
+                    <caption>Scaled Recipe</caption>
+                    <thead>
+                        <tr>
+                            <th>Ingredient</th>
+                            <th>Quantity</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

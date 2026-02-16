@@ -54,6 +54,8 @@
 
     --letter-spacing-body: normal;
 
+    --base-margin: 4cap;
+
     --color-ruby-red: oklch(47% 51% 23deg);
     --color-space-indigo: oklch(30% 9% 280deg);
     --color-near-black: oklch(12% 9% 280deg);
@@ -198,4 +200,71 @@ ol.sitenav > li a {
         --font-color-accent: var(--color-ruby-red);
         --background-color: var(--color-near-black);
     }
+}
+
+.tool-wrapper {
+    width: fit-content;
+}
+
+section:not(:last-child) {
+    margin-bottom: var(--base-margin);
+}
+
+.flex {
+    display: flex;
+    gap: 2ch;
+}
+
+.flex-columns {
+    flex-direction: column;
+}
+
+.flex-justify-right {
+    justify-content: flex-end;
+}
+
+.flex-align-start {
+    align-items: flex-start;
+}
+
+.tool input {
+    width: 8ch;
+    text-align: right;
+    font-size: var(--fs-base);
+    font-weight: 600;
+}
+
+.tool .form-group {
+    margin-bottom: 1rem;
+}
+
+.tool .form-group:last-child {
+    margin-bottom: 0;
+}
+
+table caption {
+    margin-bottom:;
+}
+
+table.recipe {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table.recipe {
+    margin-bottom: var(--base-margin);
+}
+
+table.recipe th,
+table.recipe td {
+    border: 1px solid var(--color-dusk-blue);
+    padding: 8px;
+}
+
+table.recipe td {
+    text-align: right;
+}
+
+table.recipe th[scope="row"] {
+    text-align: left;
 }
