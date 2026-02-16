@@ -247,16 +247,13 @@ section:not(:last-child) {
 }
 
 table caption {
-    margin-bottom:;
+    margin-bottom: 1rcap;
 }
 
 table.recipe {
+    margin-block: calc(var(--base-margin) / 2);
     border-collapse: collapse;
     width: 100%;
-}
-
-table.recipe {
-    margin-bottom: var(--base-margin);
 }
 
 table.recipe th,
