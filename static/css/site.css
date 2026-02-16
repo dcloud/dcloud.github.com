@@ -91,6 +91,11 @@ body {
     background-color: var(--background-color);
 }
 
+input,
+textarea {
+    font-size: var(--fs-base);
+}
+
 a {
     color: var(--font-color-action);
     text-underline-offset: 2px;
@@ -230,7 +235,6 @@ section:not(:last-child) {
 .tool input {
     width: 8ch;
     text-align: right;
-    font-size: var(--fs-base);
     font-weight: 600;
 }
 
