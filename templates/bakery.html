@@ -6,69 +6,64 @@
 {% endblock head %}
 
 {% block content %}
-<h2>Baking Tools</h2>
-<section class="tool-wrapper">
-    <h3>Temperature Calculator</h3>
-    <form id="temperature-calculator" class="tool">
-    <div class="form-group flex flex-justify-right">
-        <label for="ddt">Desired Dough Temperature</label>
-        <input type="text" inputmode="numeric" pattern="[0-9]*" value="78" class="form-control" id="ddt">
+<h2 class="print:">Baking Tools</h2>
+<section class="tool-wrapper mb-8">
+    <h3 class="mb-1">Temperature Calculator</h3>
+    <form id="temperature-calculator" class="tool grid grid-auto-rows gap-3 max-w-lg">
+    <div class="form-group grid grid-cols-4">
+        <label for="ddt" class="col-span-3">Desired Dough Temperature</label>
+        <input type="text" inputmode="numeric" pattern="[0-9]*" value="78" class="form-control text-right" id="ddt">
     </div>
-    <div class="form-group flex flex-justify-right">
-        <label for="rt">Room Temperature</label>
-        <input type="text" inputmode="numeric" pattern="[0-9]*" class="form-control" id="rt">
+    <div class="form-group grid grid-cols-4">
+        <label for="rt" class="col-span-3">Room Temperature</label>
+        <input type="text" inputmode="numeric" pattern="[0-9]*" class="form-control text-right" id="rt">
     </div>
-    <div class="form-group flex flex-justify-right">
-        <label for="ft">Flour Temperature</label>
-        <input type="text" inputmode="numeric" pattern="[0-9]*" class="form-control" id="ft">
+    <div class="form-group grid grid-cols-4">
+        <label for="ft" class="col-span-3">Flour Temperature</label>
+        <input type="text" inputmode="numeric" pattern="[0-9]*" class="form-control text-right" id="ft">
     </div>
-    <div class="form-group flex flex-justify-right">
-        <label for="wt">Water Temperature</label>
-        <input type="text" readonly class="form-control" id="wt">
+    <div class="form-group grid grid-cols-4">
+        <label for="wt" class="col-span-3">Water Temperature</label>
+        <input type="text" readonly class="form-control text-right border-rose-pine-foam" id="wt">
     </div>
     </form>
 </section>
 
 <section class="tool-wrapper">
-    <h3>Baker's Math</h3>
+    <h3 class="mb-2">Baker's Math</h3>
     <div id="bakers-math" class="tool">
-        <template id="ingredient-item">
-            <tr>
-                <th scope="row"></th>
-                <td></td>
-            </tr>
-        </template>
-        <div class="flex flex-columns">
-            <textarea id="recipe" rows="8" cols="30"></textarea>
-            <h4>Calculations</h4>
-            <aside><p>Currently, we only calculate ingredients measured by weight in grams.</p></aside>
-            <table id="recipe-percentages" class="recipe">
-                <caption>Baker's Percentages</caption>
+        <form id="bakers-math-form" class="my-6">
+            <label for="recipe" class="block mb-2">Input Recipe</label>
+            <textarea id="recipe" rows="8" cols="40" class="w-full"></textarea>
+        </form>
+        <h4 class="mb-2">Calculations</h4>
+        <aside class="text-sm italic"><p>This tool only calculates using ingredients measured in grams.</p></aside>
+        <table id="recipe-percentages" class="recipe table-fixed w-full mb-8">
+            <caption class="my-2 text-base">Baker's Percentages</caption>
+            <thead>
+                <tr>
+                    <th>Quantity</th>
+                    <th class="w-95">Ingredient</th>
+                    <th>Percent</th>
+                </tr>
+            </thead>
+            <tbody class="[&_td]:text-right [&_th]:text-left"></tbody>
+        </table>
+        <div class="grid grid-auto-rows mt-8">
+            <div class="flex flex-align-start">
+                <label for="scale-pct" class="mr-3">Scale by:</label>
+                <span><input id="scale-pct" type="text" inputmode="numeric" min="10" max="1000" value="50"> %</span>
+            </div>
+            <table id="scaled-recipe" class="recipe table-fixed w-full">
+                <caption class="my-2 text-base">Scaled Recipe</caption>
                 <thead>
                     <tr>
-                        <th>Quantity</th>
                         <th>Ingredient</th>
-                        <th>Percent</th>
+                        <th>Quantity</th>
                     </tr>
                 </thead>
-                <tbody></tbody>
+                <tbody class="[&_td]:text-right [&_th]:text-left"></tbody>
             </table>
-            <div>
-                <div class="flex flex-align-start">
-                    <label for="scale-pct">Scale by</label>
-                    <span><input id="scale-pct" type="text" inputmode="numeric" min="10" max="1000" value="50"> %</span>
-                </div>
-                <table id="scaled-recipe" class="recipe">
-                    <caption>Scaled Recipe</caption>
-                    <thead>
-                        <tr>
-                            <th>Ingredient</th>
-                            <th>Quantity</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-            </div>
         </div>
     </div>
 </section>

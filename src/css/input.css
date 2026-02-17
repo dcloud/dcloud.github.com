@@ -1,271 +1,79 @@
-/* Major Third scale, with sm tweaked up */
-/* For browsers that support clamp  */
-@supports (font-size: clamp(1rem, 1vi, 1rem)) {
-    :root {
-        --fs-sm: clamp(0.875rem, 0.192vi + 0.815rem, 0.969rem);
-        --fs-base: clamp(1rem, 0.34vi + 0.91rem, 1.19rem);
-        --fs-md: clamp(1.25rem, 0.61vi + 1.1rem, 1.58rem);
-        --fs-lg: clamp(1.56rem, 1vi + 1.31rem, 2.11rem);
-        --fs-xl: clamp(1.95rem, 1.56vi + 1.56rem, 2.81rem);
-        --fs-xxl: clamp(2.44rem, 2.38vi + 1.85rem, 3.75rem);
-        --fs-xxxl: clamp(3.05rem, 3.54vi + 2.17rem, 5rem);
-    }
-}
-/* For browsers that don't support clamp */
-@supports not (font-size: clamp(1rem, 1vi, 1rem)) {
-    :root {
-        --fs-sm: 0.875rem;
-        --fs-base: 1rem;
-        --fs-md: 1.25rem;
-        --fs-lg: 1.56rem;
-        --fs-xl: 1.95rem;
-        --fs-xxl: 2.44rem;
-        --fs-xxxl: 3.05rem;
-    }
-    @media screen and (min-width: 1280px) {
-        :root {
-            --fs-sm: 0.969rem;
-            --fs-base: 1.19rem;
-            --fs-md: 1.58rem;
-            --fs-lg: 2.11rem;
-            --fs-xl: 2.81rem;
-            --fs-xxl: 3.75rem;
-            --fs-xxxl: 5rem;
-        }
-    }
-}
-:root {
-    --font-stack-geometric-humanist:
+@import "tailwindcss";
+@import "./rose-pine/rose-pine.css";
+
+@theme {
+    --font-serif:
         Avenir, Montserrat, Corbel, "URW Gothic", source-sans-pro, sans-serif;
-    --font-stack-classical-humanist:
-        Optima, Candara, "Noto Sans", source-sans-pro, sans-serif;
-    --font-stack-code:
+    --font-sans: Optima, Candara, "Noto Sans", source-sans-pro, sans-serif;
+    --font-mono:
         ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas,
         "DejaVu Sans Mono", monospace;
-    --font-body: var(--font-stack-code);
-    --font-display: var(--font-stack-geometric-humanist);
-    --font-code: var(--font-stack-code);
-
-    --font-weight-body: normal;
-    --font-weight-display: 300;
-
-    --line-height-body: 1.5;
-    --line-height-display: 1.125;
-
-    --letter-spacing-body: normal;
-
-    --base-margin: 4cap;
-
-    --color-ruby-red: oklch(47% 51% 23deg);
-    --color-space-indigo: oklch(30% 9% 280deg);
-    --color-near-black: oklch(12% 9% 280deg);
-    --color-near-white: oklch(99% 1% 280deg);
-    --color-dusk-blue: oklch(46% 29% 262deg);
-    --color-lavender-mist: oklch(97% 5% 308deg);
-    --color-jasmine: oklch(94% 31% 100deg);
-
-    --font-color-default: var(--color-space-indigo);
-    --font-color-action: var(--color-dusk-blue);
-    --font-color-accent: var(--color-ruby-red);
-    --background-color: var(--color-near-white);
+    --text-xs: clamp(0.64rem, 0.192vi + 0.64rem, 0.78rem);
+    --text-sm: clamp(0.875rem, 0.192vi + 0.815rem, 0.969rem);
+    --text-base: clamp(1rem, 0.34vi + 0.91rem, 1.19rem);
+    --text-md: clamp(1.25rem, 0.61vi + 1.1rem, 1.58rem);
+    --text-lg: clamp(1.56rem, 1vi + 1.31rem, 2.11rem);
+    --text-xl: clamp(1.95rem, 1.56vi + 1.56rem, 2.81rem);
+    --text-2xl: clamp(2.44rem, 2.38vi + 1.85rem, 3.75rem);
+    --text-3xl: clamp(3.05rem, 3.54vi + 2.17rem, 5rem);
+    --text-4xl: clamp(3.81rem, 3.81vi + 2.44rem, 6.25rem);
 }
 
-:root {
-    box-sizing: border-box;
+@layer base {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+        @apply font-serif font-light;
+    }
+    h1 {
+        @apply text-2xl;
+    }
+    h2 {
+        @apply text-xl;
+    }
+    h3 {
+        @apply text-lg;
+    }
+    h4 {
+        @apply text-base;
+    }
+    h5 {
+        @apply text-sm;
+    }
+
+    body {
+        @apply font-mono text-base;
+    }
+    p {
+        @apply mb-4;
+    }
+    a {
+        @apply text-rose-pine-gold hover:text-rose-pine-love underline;
+    }
+
+    input,
+    textarea {
+        @apply border border-rose-pine-subtle bg-rose-pine-surface accent-rose-pine-foam rounded-sm px-2 py-1;
+    }
+    label {
+        @apply py-1;
+    }
+
+    table {
+        @apply border-collapse border border-rose-pine-subtle;
+        td,
+        th {
+            @apply border border-rose-pine-subtle px-2 py-1;
+        }
+        thead th {
+            @apply bg-rose-pine-highlight-low;
+        }
+    }
 }
 
 /* Opt in to default view transition */
 @view-transition {
     navigation: auto;
-}
-
-body {
-    min-height: 100vh;
-    margin: 0;
-    padding: 0;
-    font-family: var(--font-body);
-    font-weight: var(--font-weight-body);
-    font-size: var(--fs-base);
-    line-height: var(--line-height-body);
-    color: var(--font-color-default);
-    background-color: var(--background-color);
-}
-
-input,
-textarea {
-    font-size: var(--fs-base);
-}
-
-a {
-    color: var(--font-color-action);
-    text-underline-offset: 2px;
-    text-decoration: underline 1px;
-}
-a:hover {
-    color: var(--font-color-accent);
-    text-decoration-style: double;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: var(--font-display);
-    line-height: var(--line-height-display);
-    margin: 0 0 1.25rem;
-}
-
-h1 {
-    font-size: var(--fs-xxl);
-}
-h2 {
-    font-size: var(--fs-xl);
-}
-h3 {
-    font-size: var(--fs-lg);
-}
-h4 {
-    font-size: var(--fs-md);
-}
-h5 {
-    font-size: var(--fs-base);
-}
-
-p {
-    letter-spacing: var(--letter-spacing-body);
-}
-
-[id] {
-    scroll-margin: 1.5rem;
-}
-
-.container {
-    --padding-x: 3ch;
-    --padding-y: 2cap;
-    width: clamp(
-        calc(40ch - var(--padding-x) * 2),
-        calc(95vw - var(--padding-x) * 2),
-        calc(88ch - var(--padding-x) * 2)
-    );
-    margin-inline: auto;
-    margin-block: var(--padding-y);
-}
-
-nav {
-    padding: 1cap 0;
-    border-width: 0 0 2px;
-    border-style: solid;
-    border-image: linear-gradient(
-            in oklch to right,
-            var(--color-space-indigo) 0%,
-            var(--color-jasmine) 50%,
-            var(--color-space-indigo) 100%
-        )
-        1;
-}
-
-[role="banner"] > h1 {
-    text-align: center;
-    font-weight: 400;
-    letter-spacing: 0.2rem;
-}
-
-ol.sitenav {
-    --width: 6ch;
-    --gap: 2ch;
-
-    margin: 0;
-    padding: 0;
-
-    display: grid;
-    grid-gap: var(--gap);
-    grid-template-columns: repeat(auto-fill, minmax(var(--width), 1fr));
-    list-style: none;
-    padding-inline: var(--gap);
-}
-
-ol.sitenav > li a {
-    display: inline-block;
-    padding: 0.5ch;
-}
-
-.content {
-    min-height: 70vh;
-    padding: var(--padding-y) 0;
-}
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --color-ruby-red: oklch(94% 83% 23deg);
-
-        --font-color-default: var(--color-near-white);
-        --font-color-action: var(--color-jasmine);
-        --font-color-accent: var(--color-ruby-red);
-        --background-color: var(--color-near-black);
-    }
-}
-
-.tool-wrapper {
-    width: fit-content;
-}
-
-section:not(:last-child) {
-    margin-bottom: var(--base-margin);
-}
-
-.flex {
-    display: flex;
-    gap: 2ch;
-}
-
-.flex-columns {
-    flex-direction: column;
-}
-
-.flex-justify-right {
-    justify-content: flex-end;
-}
-
-.flex-align-start {
-    align-items: flex-start;
-}
-
-.tool input {
-    width: 8ch;
-    text-align: right;
-    font-weight: 600;
-}
-
-.tool .form-group {
-    margin-bottom: 1rem;
-}
-
-.tool .form-group:last-child {
-    margin-bottom: 0;
-}
-
-table caption {
-    margin-bottom: 1rcap;
-}
-
-table.recipe {
-    margin-block: calc(var(--base-margin) / 2);
-    border-collapse: collapse;
-    width: 100%;
-}
-
-table.recipe th,
-table.recipe td {
-    border: 1px solid var(--color-dusk-blue);
-    padding: 8px;
-}
-
-table.recipe td {
-    text-align: right;
-}
-
-table.recipe th[scope="row"] {
-    text-align: left;
 }

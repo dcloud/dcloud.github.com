@@ -145,18 +145,18 @@ const displayScaledRecipe = (recipe) => {
   output.innerHTML = "";
 
   for (const { amount, unit, name, percentage, type } of recipe) {
-    const template = tool.querySelector("#ingredient-item");
-    const clone = document.importNode(template.content, true);
-    const row = clone.querySelector("tr");
-    const labelCell = row.querySelector("th");
-    const valueCell = row.querySelector("td");
+    const row = document.createElement("tr");
+    const labelCell = document.createElement("th");
+    const valueCell = document.createElement("td");
     labelCell.textContent = name;
     valueCell.textContent = `${amount.toFixed(2)} ${unit}`;
     row.dataset.amount = amount;
     row.dataset.unit = unit;
     row.dataset.bakersPercentage = percentage;
     row.dataset.type = type;
-    output.appendChild(clone);
+    row.appendChild(labelCell);
+    row.appendChild(valueCell);
+    output.appendChild(row);
   }
 };
 
