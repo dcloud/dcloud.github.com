@@ -1,0 +1,8 @@
+{
+  "nodeModulesDir": "auto",
+  "imports": {
+    "@tailwindcss/cli": "npm:@tailwindcss/cli@^4.1.18",
+    "daisyui": "npm:daisyui@^5.5.18",
+    "tailwindcss": "npm:tailwindcss@^4.1.18"
+  }
+}

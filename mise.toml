@@ -1,0 +1,17 @@
+[tools]
+zola = "latest"
+deno = "latest"
+
+[env]
+_.path = ['{{config_root}}/node_modules/.bin']
+
+[tasks.tailwind]
+run = "tailwindcss -i src/css/input.css -o static/css/site.css --watch"
+
+[tasks.zola]
+run = "zola serve --drafts"
+
+[tasks.serve]
+run = [
+    { tasks = ["tailwind", "zola"] },
+]
