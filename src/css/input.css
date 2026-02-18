@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "./rose-pine/rose-pine.css";
+@import "./rose-pine/rose-pine-dawn.css";
 
 @theme {
     --font-serif: Charter, "Bitstream Charter", "Sitka Text", Cambria, serif;
@@ -17,9 +18,39 @@
     --text-2xl: clamp(2.44rem, 2.38vi + 1.85rem, 3.75rem);
     --text-3xl: clamp(3.05rem, 3.54vi + 2.17rem, 5rem);
     --text-4xl: clamp(3.81rem, 3.81vi + 2.44rem, 6.25rem);
+
+    /*Address WCAG AAA contrast needs with adjusted coloors*/
+    /*"Dawn" light theme*/
+    --color-rose-pine-dawn-passion: oklch(
+        from var(--color-rose-pine-dawn-love) calc(l - 0.15) c h
+    );
+
+    --color-rose-pine-dawn-gilded: oklch(
+        from var(--color-rose-pine-dawn-gold) calc(l + 0.3) calc(c - 0.1) h
+    );
+
+    --color-rose-pine-dawn-loblolly: oklch(
+        from var(--color-rose-pine-dawn-pine) calc(l - 0.07) c h
+    );
+    /*Dark theme*/
+    --color-rose-pine-passion: oklch(
+        from var(--color-rose-pine-love) calc(l - 0.35) calc(c + 0.1) h
+    );
+
+    --color-rose-pine-gilded: oklch(
+        from var(--color-rose-pine-gold) calc(l + 0.3) calc(c - 0.1) h
+    );
+
+    --color-rose-pine-loblolly: oklch(
+        from var(--color-rose-pine-pine) calc(l - 0.07) c h
+    );
 }
 
 @layer base {
+    html {
+        @apply bg-rose-pine-dawn-base dark:bg-rose-pine-base text-gray-700 dark:text-rose-pine-text;
+    }
+
     h1,
     h2,
     h3,
@@ -55,28 +86,28 @@
         @apply mb-4;
     }
     a {
-        @apply text-rose-pine-gold underline underline-offset-2;
-        @apply hover:text-rose-pine-love hover:underline-offset-4;
+        @apply text-rose-pine-dawn-loblolly dark:text-rose-pine-gold underline underline-offset-2;
+        @apply hover:text-rose-pine-dawn-passion dark:hover:text-rose-pine-love hover:underline-offset-4;
         @apply transition-[underline-offset] delay-150 duration-300;
     }
 
     input,
     textarea {
-        @apply border border-rose-pine-subtle bg-rose-pine-surface accent-rose-pine-foam rounded-sm px-2 py-1;
+        @apply border border-rose-pine-dawn-subtle bg-rose-pine-dawn-surface accent-rose-pine-dawn-foam rounded-sm px-2 py-1;
+        @apply dark:border-rose-pine-subtle dark:bg-rose-pine-surface dark:accent-rose-pine-foam;
     }
     label {
         @apply py-1;
     }
 
     button {
-        @apply bg-rose-pine-love/25;
+        @apply bg-rose-pine-dawn-surface dark:bg-rose-pine-surface;
+        @apply border-rose-pine-gold dark:border-rose-pine-dawn-passion;
+
         @apply border-2 rounded-md py-1 px-2;
-        box-shadow: inset 0 0 3px var(--color-gray-700);
-        border-color: oklch(from var(--color-rose-pine-love) l c h / 0.5);
 
         &:hover {
-            @apply bg-rose-pine-love/40;
-            border-color: lch(from var(--color-rose-pine-love) l c h / 0.75);
+            @apply bg-rose-pine-dawn-gilded dark:bg-rose-pine-passion;
         }
     }
     button:not(:disabled),
@@ -85,13 +116,13 @@
     }
 
     table {
-        @apply border-collapse border border-rose-pine-subtle;
+        @apply border-collapse border border-rose-pine-dawn-subtle dark:border-rose-pine-subtle;
         td,
         th {
-            @apply border border-rose-pine-subtle px-2 py-1;
+            @apply border border-rose-pine-dawn-subtle dark:border-rose-pine-subtle px-2 py-1;
         }
         thead th {
-            @apply bg-rose-pine-highlight-low;
+            @apply bg-rose-pine-dawn-highlight-low dark:bg-rose-pine-highlight-low;
         }
     }
 }

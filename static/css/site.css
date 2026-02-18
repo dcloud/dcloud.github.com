@@ -37,7 +37,27 @@
     --color-rose-pine-pine: hsl(197deg, 49%, 38%);
     --color-rose-pine-foam: hsl(189deg, 43%, 73%);
     --color-rose-pine-highlight-low: hsl(244deg, 18%, 15%);
+    --color-rose-pine-dawn-base: hsl(32deg, 57%, 95%);
+    --color-rose-pine-dawn-surface: hsl(35deg, 100%, 98%);
+    --color-rose-pine-dawn-subtle: hsl(248deg, 12%, 52%);
+    --color-rose-pine-dawn-love: hsl(343deg, 35%, 55%);
+    --color-rose-pine-dawn-gold: hsl(35deg, 81%, 56%);
+    --color-rose-pine-dawn-pine: hsl(197deg, 53%, 34%);
+    --color-rose-pine-dawn-foam: hsl(189deg, 30%, 48%);
+    --color-rose-pine-dawn-highlight-low: hsl(25deg, 35%, 93%);
     --text-md: clamp(1.25rem, 0.61vi + 1.1rem, 1.58rem);
+    --color-rose-pine-dawn-passion: oklch(
+        from var(--color-rose-pine-dawn-love) calc(l - 0.15) c h
+    );
+    --color-rose-pine-dawn-gilded: oklch(
+        from var(--color-rose-pine-dawn-gold) calc(l + 0.3) calc(c - 0.1) h
+    );
+    --color-rose-pine-dawn-loblolly: oklch(
+        from var(--color-rose-pine-dawn-pine) calc(l - 0.07) c h
+    );
+    --color-rose-pine-passion: oklch(
+        from var(--color-rose-pine-love) calc(l - 0.35) calc(c + 0.1) h
+    );
   }
 }
 @layer base {
@@ -297,9 +317,6 @@
   .border-rose-pine-pine {
     border-color: var(--color-rose-pine-pine);
   }
-  .bg-rose-pine-base {
-    background-color: var(--color-rose-pine-base);
-  }
   .px-3 {
     padding-inline: calc(var(--spacing) * 3);
   }
@@ -313,9 +330,6 @@
   .text-sm {
     font-size: var(--text-sm);
     line-height: var(--tw-leading, var(--text-sm--line-height));
-  }
-  .text-rose-pine-text {
-    color: var(--color-rose-pine-text);
   }
   .capitalize {
     text-transform: capitalize;
@@ -359,6 +373,16 @@
   }
 }
 @layer base {
+  html {
+    background-color: var(--color-rose-pine-dawn-base);
+    color: var(--color-gray-700);
+    @media (prefers-color-scheme: dark) {
+      background-color: var(--color-rose-pine-base);
+    }
+    @media (prefers-color-scheme: dark) {
+      color: var(--color-rose-pine-text);
+    }
+  }
   h1, h2, h3, h4, h5 {
     margin-bottom: calc(var(--spacing) * 2);
     font-family: var(--font-sans);
@@ -399,17 +423,27 @@
     margin-bottom: calc(var(--spacing) * 4);
   }
   a {
-    color: var(--color-rose-pine-gold);
+    color: var(--color-rose-pine-dawn-loblolly);
     text-decoration-line: underline;
     text-underline-offset: 2px;
+    @media (prefers-color-scheme: dark) {
+      color: var(--color-rose-pine-gold);
+    }
     &:hover {
       @media (hover: hover) {
-        color: var(--color-rose-pine-love);
+        color: var(--color-rose-pine-dawn-passion);
       }
     }
     &:hover {
       @media (hover: hover) {
         text-underline-offset: 4px;
+      }
+    }
+    @media (prefers-color-scheme: dark) {
+      &:hover {
+        @media (hover: hover) {
+          color: var(--color-rose-pine-love);
+        }
       }
     }
     transition-property: underline-offset;
@@ -423,33 +457,43 @@
     border-radius: var(--radius-sm);
     border-style: var(--tw-border-style);
     border-width: 1px;
-    border-color: var(--color-rose-pine-subtle);
-    background-color: var(--color-rose-pine-surface);
+    border-color: var(--color-rose-pine-dawn-subtle);
+    background-color: var(--color-rose-pine-dawn-surface);
     padding-inline: calc(var(--spacing) * 2);
     padding-block: calc(var(--spacing) * 1);
-    accent-color: var(--color-rose-pine-foam);
+    accent-color: var(--color-rose-pine-dawn-foam);
+    @media (prefers-color-scheme: dark) {
+      border-color: var(--color-rose-pine-subtle);
+    }
+    @media (prefers-color-scheme: dark) {
+      background-color: var(--color-rose-pine-surface);
+    }
+    @media (prefers-color-scheme: dark) {
+      accent-color: var(--color-rose-pine-foam);
+    }
   }
   label {
     padding-block: calc(var(--spacing) * 1);
   }
   button {
-    background-color: color-mix(in srgb, hsl(343deg, 76%, 68%) 25%, transparent);
-    @supports (color: color-mix(in lab, red, red)) {
-      background-color: color-mix(in oklab, var(--color-rose-pine-love) 25%, transparent);
+    background-color: var(--color-rose-pine-dawn-surface);
+    @media (prefers-color-scheme: dark) {
+      background-color: var(--color-rose-pine-surface);
+    }
+    border-color: var(--color-rose-pine-gold);
+    @media (prefers-color-scheme: dark) {
+      border-color: var(--color-rose-pine-dawn-passion);
     }
     border-radius: var(--radius-md);
     border-style: var(--tw-border-style);
     border-width: 2px;
     padding-inline: calc(var(--spacing) * 2);
     padding-block: calc(var(--spacing) * 1);
-    box-shadow: inset 0 0 3px var(--color-gray-700);
-    border-color: oklch(from var(--color-rose-pine-love) l c h / 0.5);
     &:hover {
-      background-color: color-mix(in srgb, hsl(343deg, 76%, 68%) 40%, transparent);
-      @supports (color: color-mix(in lab, red, red)) {
-        background-color: color-mix(in oklab, var(--color-rose-pine-love) 40%, transparent);
+      background-color: var(--color-rose-pine-dawn-gilded);
+      @media (prefers-color-scheme: dark) {
+        background-color: var(--color-rose-pine-passion);
       }
-      border-color: lch(from var(--color-rose-pine-love) l c h / 0.75);
     }
   }
   button:not(:disabled), [role="button"]:not(:disabled) {
@@ -459,16 +503,25 @@
     border-collapse: collapse;
     border-style: var(--tw-border-style);
     border-width: 1px;
-    border-color: var(--color-rose-pine-subtle);
+    border-color: var(--color-rose-pine-dawn-subtle);
+    @media (prefers-color-scheme: dark) {
+      border-color: var(--color-rose-pine-subtle);
+    }
     td, th {
       border-style: var(--tw-border-style);
       border-width: 1px;
-      border-color: var(--color-rose-pine-subtle);
+      border-color: var(--color-rose-pine-dawn-subtle);
       padding-inline: calc(var(--spacing) * 2);
       padding-block: calc(var(--spacing) * 1);
+      @media (prefers-color-scheme: dark) {
+        border-color: var(--color-rose-pine-subtle);
+      }
     }
     thead th {
-      background-color: var(--color-rose-pine-highlight-low);
+      background-color: var(--color-rose-pine-dawn-highlight-low);
+      @media (prefers-color-scheme: dark) {
+        background-color: var(--color-rose-pine-highlight-low);
+      }
     }
   }
 }
