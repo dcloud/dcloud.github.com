@@ -3,8 +3,8 @@
 @layer theme, base, components, utilities;
 @layer theme {
   :root, :host {
-    --font-sans: Optima, Candara, "Noto Sans", source-sans-pro, sans-serif;
-    --font-serif: Avenir, Montserrat, Corbel, "URW Gothic", source-sans-pro, sans-serif;
+    --font-sans: Avenir, Montserrat, Corbel, "URW Gothic", source-sans-pro, sans-serif;
+    --font-serif: Charter, "Bitstream Charter", "Sitka Text", Cambria, serif;
     --font-mono: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas,
         "DejaVu Sans Mono", monospace;
     --color-gray-700: oklch(37.3% 0.034 259.733);
@@ -24,6 +24,8 @@
     --font-weight-light: 300;
     --radius-sm: 0.25rem;
     --radius-md: 0.375rem;
+    --default-transition-duration: 150ms;
+    --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
     --color-rose-pine-base: hsl(249deg, 22%, 12%);
@@ -238,6 +240,9 @@
   .mb-2 {
     margin-bottom: calc(var(--spacing) * 2);
   }
+  .mb-6 {
+    margin-bottom: calc(var(--spacing) * 6);
+  }
   .mb-8 {
     margin-bottom: calc(var(--spacing) * 8);
   }
@@ -355,11 +360,13 @@
 }
 @layer base {
   h1, h2, h3, h4, h5 {
-    font-family: var(--font-serif);
+    margin-bottom: calc(var(--spacing) * 2);
+    font-family: var(--font-sans);
     --tw-font-weight: var(--font-weight-light);
     font-weight: var(--font-weight-light);
   }
   h1 {
+    margin-bottom: calc(var(--spacing) * 3);
     font-size: var(--text-2xl);
     line-height: var(--tw-leading, var(--text-2xl--line-height));
   }
@@ -380,10 +387,13 @@
     line-height: var(--tw-leading, var(--text-sm--line-height));
   }
   body {
-    font-family: var(--font-mono);
+    font-family: var(--font-serif);
     font-size: var(--text-base);
     line-height: var(--tw-leading, var(--text-base--line-height));
     scrollbar-gutter: stable;
+  }
+  nav {
+    font-family: var(--font-sans);
   }
   p {
     margin-bottom: calc(var(--spacing) * 4);
@@ -397,6 +407,17 @@
         color: var(--color-rose-pine-love);
       }
     }
+    &:hover {
+      @media (hover: hover) {
+        text-underline-offset: 4px;
+      }
+    }
+    transition-property: underline-offset;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+    transition-delay: 150ms;
+    --tw-duration: 300ms;
+    transition-duration: 300ms;
   }
   input, textarea {
     border-radius: var(--radius-sm);
@@ -458,10 +479,14 @@
     padding: calc(var(--spacing) * 2);
     vertical-align: baseline;
     text-decoration-thickness: 2px;
+    &[aria-current="page"]:not(.logotype) {
+      text-decoration-line: none;
+    }
   }
   .logotype {
     font-size: var(--text-md);
-    text-decoration-line: none;
+    text-decoration-style: dotted;
+    text-decoration-thickness: 2px;
   }
 }
 @view-transition {
@@ -524,6 +549,10 @@
   syntax: "*";
   inherits: false;
 }
+@property --tw-duration {
+  syntax: "*";
+  inherits: false;
+}
 @property --tw-border-style {
   syntax: "*";
   inherits: false;
@@ -546,6 +575,7 @@
       --tw-drop-shadow-alpha: 100%;
       --tw-drop-shadow-size: initial;
       --tw-font-weight: initial;
+      --tw-duration: initial;
       --tw-border-style: solid;
     }
   }

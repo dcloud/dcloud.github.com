@@ -2,9 +2,9 @@
 @import "./rose-pine/rose-pine.css";
 
 @theme {
-    --font-serif:
+    --font-serif: Charter, "Bitstream Charter", "Sitka Text", Cambria, serif;
+    --font-sans:
         Avenir, Montserrat, Corbel, "URW Gothic", source-sans-pro, sans-serif;
-    --font-sans: Optima, Candara, "Noto Sans", source-sans-pro, sans-serif;
     --font-mono:
         ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas,
         "DejaVu Sans Mono", monospace;
@@ -25,10 +25,10 @@
     h3,
     h4,
     h5 {
-        @apply font-serif font-light;
+        @apply font-sans font-light mb-2;
     }
     h1 {
-        @apply text-2xl;
+        @apply text-2xl mb-3;
     }
     h2 {
         @apply text-xl;
@@ -44,14 +44,20 @@
     }
 
     body {
-        @apply font-mono text-base;
+        @apply font-serif text-base;
         scrollbar-gutter: stable;
+    }
+
+    nav {
+        @apply font-sans;
     }
     p {
         @apply mb-4;
     }
     a {
-        @apply text-rose-pine-gold hover:text-rose-pine-love underline underline-offset-2;
+        @apply text-rose-pine-gold underline underline-offset-2;
+        @apply hover:text-rose-pine-love hover:underline-offset-4;
+        @apply transition-[underline-offset] delay-150 duration-300;
     }
 
     input,
@@ -93,10 +99,14 @@
 @layer components {
     .nav-item {
         @apply inline-block align-baseline decoration-2 h-full p-2;
+
+        &[aria-current="page"]:not(.logotype) {
+            @apply no-underline;
+        }
     }
 
     .logotype {
-        @apply text-md no-underline;
+        @apply text-md decoration-2 decoration-dotted;
     }
 }
 
