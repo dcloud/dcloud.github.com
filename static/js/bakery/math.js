@@ -172,7 +172,6 @@ const handleRecipeChange = () => {
   const recipe_input = tool.querySelector("#recipe");
   const scaleControl = tool.querySelector("#scale-pct");
   const { recipe, totalWeight } = parseRecipe(recipe_input.value);
-  // console.log(`Total Flour: ${totalFlour}. Total Weight: ${totalWeight}.`);
   displayRecipePercentages(recipe, totalWeight);
 
   const scaleFactor = parseInt(scaleControl.value) / 100;
@@ -183,8 +182,8 @@ const handleRecipeChange = () => {
 const runTool = () => {
   tool.querySelector("#recipe").addEventListener("blur", handleRecipeChange);
   tool
-    .querySelector("#scale-pct")
-    .addEventListener("change", handleRecipeChange);
+    .querySelector("#scale-btn")
+    .addEventListener("click", handleRecipeChange);
 };
 
 if (tool != null && recipe != null) {

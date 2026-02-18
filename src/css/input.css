@@ -45,12 +45,13 @@
 
     body {
         @apply font-mono text-base;
+        scrollbar-gutter: stable;
     }
     p {
         @apply mb-4;
     }
     a {
-        @apply text-rose-pine-gold hover:text-rose-pine-love underline;
+        @apply text-rose-pine-gold hover:text-rose-pine-love underline underline-offset-2;
     }
 
     input,
@@ -59,6 +60,22 @@
     }
     label {
         @apply py-1;
+    }
+
+    button {
+        @apply bg-rose-pine-love/25;
+        @apply border-2 rounded-md py-1 px-2;
+        box-shadow: inset 0 0 3px var(--color-gray-700);
+        border-color: oklch(from var(--color-rose-pine-love) l c h / 0.5);
+
+        &:hover {
+            @apply bg-rose-pine-love/40;
+            border-color: lch(from var(--color-rose-pine-love) l c h / 0.75);
+        }
+    }
+    button:not(:disabled),
+    [role="button"]:not(:disabled) {
+        cursor: pointer;
     }
 
     table {
@@ -70,6 +87,16 @@
         thead th {
             @apply bg-rose-pine-highlight-low;
         }
+    }
+}
+
+@layer components {
+    .nav-item {
+        @apply inline-block align-baseline decoration-2 h-full p-2;
+    }
+
+    .logotype {
+        @apply text-md no-underline;
     }
 }
 

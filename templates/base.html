@@ -9,15 +9,12 @@
         {% block head %}{% endblock head %}
     </head>
     <body class="bg-rose-pine-base text-rose-pine-text">
-        <div class="container lg:max-w-4xl sm:mx-auto mx-3 mt-2 mb-12">
-            <div role="banner">
-                <h1>Daniel Cloud</h1>
-            </div>
+        <div class="container lg:max-w-4xl mx-auto px-3 sm:px-0 mt-4 mb-12">
             <nav class="mt-2 mb-8">
-                <ol class="flex flex-row gap-4">
-                    <li><a href="{{ get_url(path="/") }}">Home</a></li>
-                    <li><a href="{{ get_url(path="@/blog/_index.md") }}">Blog</a></li>
-                    <li><a href="{{ get_url(path="@/bakery/index.md") }}">Bakery</a></li>
+                <ol class="flex flex-row items-baseline gap-4">
+                    <li><a class="logotype nav-item" href="{{ get_url(path="/") }}">Daniel Cloud</a></li>
+                    <li><a class="nav-item" href="{{ get_url(path="@/blog/_index.md") }}">Blog</a></li>
+                    <li><a class="nav-item" href="{{ get_url(path="@/bakery/index.md") }}">Bakery</a></li>
                 </ol>
             </nav>
             <main class="content">{% block content %}{% endblock content %}</main>

@@ -6,7 +6,7 @@
 {% endblock head %}
 
 {% block content %}
-<h2 class="print:">Baking Tools</h2>
+<h2 class="print:hidden">Baking Tools</h2>
 <section class="tool-wrapper mb-8">
     <h3 class="mb-1">Temperature Calculator</h3>
     <form id="temperature-calculator" class="tool grid grid-auto-rows gap-3 max-w-lg">
@@ -24,7 +24,7 @@
     </div>
     <div class="form-group grid grid-cols-4">
         <label for="wt" class="col-span-3">Water Temperature</label>
-        <input type="text" readonly class="form-control text-right border-rose-pine-foam" id="wt">
+        <input type="text" readonly class="form-control text-right border-rose-pine-pine" id="wt">
     </div>
     </form>
 </section>
@@ -34,37 +34,73 @@
     <div id="bakers-math" class="tool">
         <form id="bakers-math-form" class="my-6">
             <label for="recipe" class="block mb-2">Input Recipe</label>
-            <textarea id="recipe" rows="8" cols="40" class="w-full"></textarea>
+            <textarea id="recipe" rows="8" class="w-full"></textarea>
+            <div class="flex flex-align-start gap-2 my-4">
+                <label for="scale-pct" class="mr-3">Scale by:</label>
+                <span><input id="scale-pct" type="text" inputmode="numeric" min="10" max="1000" size="5" value="50" class="text-right"> %</span>
+                <button type="button" id="scale-btn" class="btn btn-primary ml-3">Scale Recipe</button>
+            </div>
         </form>
-        <h4 class="mb-2">Calculations</h4>
         <aside class="text-sm italic"><p>This tool only calculates using ingredients measured in grams.</p></aside>
         <table id="recipe-percentages" class="recipe table-fixed w-full mb-8">
             <caption class="my-2 text-base">Baker's Percentages</caption>
             <thead>
                 <tr>
                     <th>Quantity</th>
-                    <th class="w-95">Ingredient</th>
+                    <th class="md:w-95">Ingredient</th>
                     <th>Percent</th>
                 </tr>
             </thead>
-            <tbody class="[&_td]:text-right [&_th]:text-left"></tbody>
+            <tbody class="[&_td]:text-right [&_th]:text-left">
+                <tr class="invisible">
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr class="invisible">
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr class="invisible">
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr class="invisible">
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+            </tbody>
         </table>
-        <div class="grid grid-auto-rows mt-8">
-            <div class="flex flex-align-start">
-                <label for="scale-pct" class="mr-3">Scale by:</label>
-                <span><input id="scale-pct" type="text" inputmode="numeric" min="10" max="1000" value="50"> %</span>
-            </div>
-            <table id="scaled-recipe" class="recipe table-fixed w-full">
-                <caption class="my-2 text-base">Scaled Recipe</caption>
-                <thead>
-                    <tr>
-                        <th>Ingredient</th>
-                        <th>Quantity</th>
-                    </tr>
-                </thead>
-                <tbody class="[&_td]:text-right [&_th]:text-left"></tbody>
-            </table>
-        </div>
+        <table id="scaled-recipe" class="recipe table-fixed w-full">
+            <caption class="my-2 text-base">Scaled Recipe</caption>
+            <thead>
+                <tr>
+                    <th>Ingredient</th>
+                    <th>Quantity</th>
+                </tr>
+            </thead>
+            <tbody class="[&_td]:text-right [&_th]:text-left">
+                <tr class="invisible">
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr class="invisible">
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr class="invisible">
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr class="invisible">
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </section>
 
