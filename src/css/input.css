@@ -154,6 +154,20 @@
     }
 }
 
+@layer utilities {
+    .list-writing {
+        --marker: "\270D\00A0";
+        li:not(:last-child) {
+            @apply mb-6;
+        }
+        li::marker {
+            @apply text-rose-pine-dawn-iris dark:text-rose-pine-foam;
+            content: var(--marker);
+            white-space: pre;
+        }
+    }
+}
+
 /* Opt in to default view transition */
 @view-transition {
     navigation: auto;

@@ -309,6 +309,9 @@
   .table-fixed {
     table-layout: fixed;
   }
+  .list-inside {
+    list-style-position: inside;
+  }
   .grid-cols-4 {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
@@ -340,9 +343,16 @@
     font-size: var(--text-base);
     line-height: var(--tw-leading, var(--text-base--line-height));
   }
+  .text-lg {
+    font-size: var(--text-lg);
+    line-height: var(--tw-leading, var(--text-lg--line-height));
+  }
   .text-sm {
     font-size: var(--text-sm);
     line-height: var(--tw-leading, var(--text-sm--line-height));
+  }
+  .text-md {
+    font-size: var(--text-md);
   }
   .capitalize {
     text-transform: capitalize;
@@ -572,6 +582,22 @@
     font-size: var(--text-md);
     text-decoration-style: dotted;
     text-decoration-thickness: 2px;
+  }
+}
+@layer utilities {
+  .list-writing {
+    --marker: "\270D\00A0";
+    li:not(:last-child) {
+      margin-bottom: calc(var(--spacing) * 6);
+    }
+    li::marker {
+      color: var(--color-rose-pine-dawn-iris);
+      @media (prefers-color-scheme: dark) {
+        color: var(--color-rose-pine-foam);
+      }
+      content: var(--marker);
+      white-space: pre;
+    }
   }
 }
 @view-transition {

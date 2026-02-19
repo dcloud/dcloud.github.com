@@ -2,7 +2,7 @@
 <header class="mb-6">
     <h1>{{ section.title }}</h1>
 </header>
-<ul>
+<ul class="list-writing list-inside text-md">
     {% for page in section.pages %}
     <li><a href="{{ page.permalink | safe }}">{{ page.title }}</a></li>
     {% endfor %}
