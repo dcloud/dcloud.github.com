@@ -9,15 +9,16 @@
     --font-mono:
         ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas,
         "DejaVu Sans Mono", monospace;
-    --text-xs: clamp(0.64rem, 0.192vi + 0.64rem, 0.78rem);
-    --text-sm: clamp(0.875rem, 0.192vi + 0.815rem, 0.969rem);
-    --text-base: clamp(1rem, 0.34vi + 0.91rem, 1.19rem);
-    --text-md: clamp(1.25rem, 0.61vi + 1.1rem, 1.58rem);
-    --text-lg: clamp(1.56rem, 1vi + 1.31rem, 2.11rem);
-    --text-xl: clamp(1.95rem, 1.56vi + 1.56rem, 2.81rem);
-    --text-2xl: clamp(2.44rem, 2.38vi + 1.85rem, 3.75rem);
-    --text-3xl: clamp(3.05rem, 3.54vi + 2.17rem, 5rem);
-    --text-4xl: clamp(3.81rem, 3.81vi + 2.44rem, 6.25rem);
+    /* Minor Third Type Scale */
+    --text-xs: clamp(0.694rem, 0.12vi + 0.67rem, 0.75rem);
+    --text-sm: clamp(0.833rem, 0.15vi + 0.8rem, 0.889rem);
+    --text-base: clamp(1rem, 0.18vi + 0.96rem, 1.063rem);
+    --text-md: clamp(1.2rem, 0.28vi + 1.13rem, 1.266rem);
+    --text-lg: clamp(1.44rem, 0.44vi + 1.31rem, 1.52rem);
+    --text-xl: clamp(1.728rem, 0.68vi + 1.54rem, 1.823rem);
+    --text-2xl: clamp(2.074rem, 1.04vi + 1.81rem, 2.188rem);
+    --text-3xl: clamp(2.488rem, 1.56vi + 2.09rem, 2.625rem);
+    --text-4xl: clamp(2.986rem, 2.34vi + 2.39rem, 3.15rem);
 
     /*Address WCAG AAA contrast needs with adjusted coloors*/
     /*"Dawn" light theme*/
@@ -32,6 +33,10 @@
     --color-rose-pine-dawn-loblolly: oklch(
         from var(--color-rose-pine-dawn-pine) calc(l - 0.07) c h
     );
+
+    --color-rose-pine-dawn-quartz: oklch(
+        from var(--color-rose-pine-dawn-iris) calc(l - 0.08) c h
+    );
     /*Dark theme*/
     --color-rose-pine-passion: oklch(
         from var(--color-rose-pine-love) calc(l - 0.35) calc(c + 0.1) h
@@ -44,6 +49,10 @@
     --color-rose-pine-loblolly: oklch(
         from var(--color-rose-pine-pine) calc(l - 0.07) c h
     );
+
+    --color-rose-pine-quartz: oklch(
+        from var(--color-rose-pine-iris) calc(l + 0.14) calc(c - 0.02) h
+    );
 }
 
 @layer base {
@@ -55,23 +64,27 @@
     h2,
     h3,
     h4,
-    h5 {
+    h5,
+    h6 {
         @apply font-sans font-light mb-2;
     }
     h1 {
-        @apply text-2xl mb-3;
+        @apply text-3xl mb-3;
     }
     h2 {
-        @apply text-xl;
+        @apply text-2xl;
     }
     h3 {
-        @apply text-lg;
+        @apply text-xl;
     }
     h4 {
-        @apply text-base;
+        @apply text-lg;
     }
     h5 {
-        @apply text-sm;
+        @apply text-md font-medium tracking-wide text-rose-pine-dawn-quartz dark:text-rose-pine-quartz;
+    }
+    h6 {
+        @apply text-base font-bold tracking-wide text-rose-pine-dawn-quartz dark:text-rose-pine-quartz;
     }
 
     body {
