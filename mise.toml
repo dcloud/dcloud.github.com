@@ -11,6 +11,9 @@ run = "tailwindcss -i src/css/input.css -o static/css/site.css --watch"
 [tasks.zola]
 run = "zola serve --drafts"
 
+[tasks.mkpost]
+run = "deno run --allow-write scripts/mkpost.ts"
+
 [tasks.serve]
 run = [
     { tasks = ["tailwind", "zola"] },
