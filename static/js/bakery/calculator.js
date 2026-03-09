@@ -17,9 +17,10 @@ function runCalculator() {
   function calculateWaterTemperature() {
     const desiredDoughTemperatureValue = parseInt(
       desiredDoughTemperature.value,
+      10,
     );
-    const flourTemperatureValue = parseInt(flourTemperature.value);
-    const roomTemperatureValue = parseInt(roomTemperature.value);
+    const flourTemperatureValue = parseInt(flourTemperature.value, 10);
+    const roomTemperatureValue = parseInt(roomTemperature.value, 10);
     const ttfMultiplier = 3;
 
     if (
@@ -30,19 +31,11 @@ function runCalculator() {
       return "";
     }
 
-    // console.log("Desired Dough Temperature:", desiredDoughTemperatureValue);
-    // console.log("Flour Temperature:", flourTemperatureValue);
-    // console.log("Room Temperature:", roomTemperatureValue);
-
     // Calculate water temperature using the formula
     const totalTemperatureFactor = desiredDoughTemperatureValue * ttfMultiplier;
     const waterTemperatureValue =
       totalTemperatureFactor - (flourTemperatureValue + roomTemperatureValue);
 
-    // console.log(
-    //   `${totalTemperatureFactor} - (${flourTemperatureValue} + ${roomTemperatureValue})`,
-    // );
-    // Update the water temperature input field
     return waterTemperatureValue.toFixed();
   }
 
@@ -55,8 +48,4 @@ function runCalculator() {
   desiredDoughTemperature.addEventListener("blur", setWaterTemperature);
   flourTemperature.addEventListener("blur", setWaterTemperature);
   roomTemperature.addEventListener("blur", setWaterTemperature);
-
-  document.addEventListener("DOMContentLoaded", () => {
-    waterTemperature.value = "";
-  });
 }
