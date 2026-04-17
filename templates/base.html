@@ -15,7 +15,6 @@
                 <ol class="flex flex-row items-baseline gap-4">
                     <li><a class="logotype nav-item" href="{{ get_url(path="/") }}" {% if p == '/' %}aria-current="page"{% endif %}>Daniel Cloud</a></li>
                     <li><a class="nav-item" href="{{ get_url(path="@/blog/_index.md") }}" {% if p == '/blog/' %}aria-current="page"{% endif %}>Blog</a></li>
-                    <li><a class="nav-item" href="{{ get_url(path="@/bakery/index.md") }}" {% if p == '/bakery/' %}aria-current="page"{% endif %}>Bakery</a></li>
                 </ol>
             </nav>
             <main class="content">{% block content %}{% endblock content %}</main>
